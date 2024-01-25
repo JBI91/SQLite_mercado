@@ -1,0 +1,58 @@
+Vista 1 : Por empresa - nombre, facturación y sector.
+
+Vista 2 : Por sector - nombre del sector. Al hacer clic, listado de empresas de ese sector ordenadas por el nombre.
+
+-- Crear tabla "sector"
+CREATE TABLE sector (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    descripcion TEXT
+);
+-- Crear tabla "empresa"
+CREATE TABLE empresa (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nombre TEXT,
+    facturacion INTEGER,
+    sector_id INTEGER,
+    FOREIGN KEY (sector_id) REFERENCES sector(id)
+);
+-- Añadir sectores a la tabla "sector"
+INSERT INTO sector (descripcion) VALUES ('Automoción');
+INSERT INTO sector (descripcion) VALUES ('Servicios');
+INSERT INTO sector (descripcion) VALUES ('Construcción');
+-- Añadir empresas europeas a la tabla "empresa" (asumiendo que ya se han añadido los sectores)
+-- Empresas del sector "Automoción"
+INSERT INTO empresa (nombre, facturacion, sector_id) VALUES
+('SEAT', 100000000, 1),
+('Renault España', 120000000, 1),
+('Volkswagen España', 90000000, 1),
+('Peugeot España', 80000000, 1),
+('Ford España', 110000000, 1),
+('Opel España', 95000000, 1),
+('Mercedes-Benz España', 130000000, 1),
+('BMW España', 115000000, 1),
+('Audi España', 125000000, 1),
+('Fiat España', 85000000, 1);
+-- Empresas del sector "Servicios"
+INSERT INTO empresa (nombre, facturacion, sector_id) VALUES
+('Telefónica', 50000000, 2),
+('Banco Santander', 70000000, 2),
+('BBVA', 60000000, 2),
+('Iberdrola', 80000000, 2),
+('Repsol', 55000000, 2),
+('Inditex', 90000000, 2),
+('Aena', 45000000, 2),
+('Mapfre', 40000000, 2),
+('ACS', 75000000, 2),
+('Ferrovial', 65000000, 2);
+-- Empresas del sector "Construcción"
+INSERT INTO empresa (nombre, facturacion, sector_id) VALUES
+('FCC Construcción', 30000000, 3),
+('Sacyr', 28000000, 3),
+('OHL', 32000000, 3),
+('Acciona Construcción', 33000000, 3),
+('Dragados', 31000000, 3),
+('Ferrovial Construcción', 34000000, 3),
+('Aldesa', 29000000, 3),
+('Eiffage España', 27000000, 3),
+('Grupo San José', 26000000, 3),
+('Copcisa', 30000000, 3);
